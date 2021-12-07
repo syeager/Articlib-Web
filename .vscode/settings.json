@@ -1,0 +1,16 @@
+{
+    "files.eol": "\n",
+    "files.associations": {
+        "*.nswag": "json",
+        "*.env*": "ini"
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "FSharp.suggestGitignore": false,
+    "editor.tabSize": 2
+}
