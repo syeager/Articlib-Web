@@ -1,0 +1,23 @@
+name: ci
+
+on:
+  push:
+    branches-ignore:
+      - "private/**"
+  pull_request:
+    branches-ignore:
+      - "private/**"
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v2
+        with:
+          submodules: recursive
+          
+      - name: Build
+        run: npm build
