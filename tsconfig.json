@@ -16,11 +16,26 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true,
-    "jsx": "react-jsx"
+    "isolatedModules": false,
+    "noEmit": false,
+    "jsx": "react-jsx",
+    "baseUrl": "./",
+    "sourceMap": true,
+    "outDir": "./dist/",
+    "downlevelIteration": true,
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
   },
   "include": [
-    "src"
+    "src",
+    "tools",
+  ],
+  "exclude": [
+    "config",
+    "node_modules",
+    "webpack.config.ts"
   ]
 }
