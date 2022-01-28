@@ -45,6 +45,7 @@
     "metascraper": "^5.25.5",
     "metascraper-image": "^5.25.5",
     "mini-css-extract-plugin": "2.4.5",
+    "moment": "^2.29.1",
     "net": "^1.0.2",
     "open-graph-scraper": "^4.11.0",
     "page-metadata-parser": "^1.1.4",
