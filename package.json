@@ -101,6 +101,7 @@
     "postcss-normalize": "10.0.1",
     "postcss-preset-env": "7.0.1",
     "postcss-safe-parser": "6.0.0",
+    "prepend-file": "^2.0.1",
     "prettier": "^2.5.1",
     "react-hot-loader": "^4.13.0",
     "terser-webpack-plugin": "5.2.5",
