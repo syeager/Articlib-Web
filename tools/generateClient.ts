@@ -49,5 +49,5 @@ function onComplete(error: any | null, stdout: string, stderr: string): void {
 
 const nswagPath = path.join("node_modules", ".bin", "nswag");
 const variables = `/variables:API_URL=${options.url},SCHEME=${options.scheme}`;
-const command = `${nswagPath} run ./config/ArticlibClient.nswag /runtime:Net50 ${variables}`;
+const command = `${nswagPath} run ./config/ArticlibClient.nswag /runtime:Net60 ${variables}`;
 child_process.exec(command, onComplete);

@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const webpack = require("webpack");
+// const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 
 const srcPath = path.resolve(__dirname, "src");
 const distPath = path.resolve(__dirname, "dist");
-const nodeModulesPath = path.resolve(__dirname, "node_modules");
 
 module.exports = {
   entry: [
@@ -18,7 +17,6 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".json"],
-    modules: [nodeModulesPath],
   },
   module: {
     rules: [
@@ -42,9 +40,6 @@ module.exports = {
       },
     ],
   },
-  resolveLoader: {
-    modules: [nodeModulesPath],
-  },
   output: {
     filename: "bundle.js",
     path: distPath,
@@ -61,13 +56,14 @@ module.exports = {
         { from: path.resolve(__dirname, "public", "meta"), to: distPath },
       ],
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     //new webpack.NamedModulesPlugin(),
   ],
   devServer: {
-    contentBase: distPath,
+    static: distPath,
     port: 8888,
-    hot: true,
-    publicPath: "/",
+    devMiddleware: {
+      publicPath: "/",
+    },
   },
 };
