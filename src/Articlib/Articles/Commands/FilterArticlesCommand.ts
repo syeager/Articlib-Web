@@ -1,7 +1,7 @@
 import { Article, createArticle } from "../Models/Article";
 import { FilterArticlesRequest } from "../Requests/FilterArticlesRequest";
-import { RequestManager } from "../../Articlib/ArticlibRequestManager";
-import { Articlib } from "../../generated/ArticlibClient";
+import { RequestManager } from "../../../Articlib/Requests";
+import { Articlib } from "../../../generated/ArticlibClient";
 import { BatchGetUsersRequest } from "../../Users/Requests/BatchGetUsersRequest";
 import { User } from "../../Users/Models/User";
 

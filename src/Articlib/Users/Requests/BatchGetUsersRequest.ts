@@ -1,5 +1,5 @@
-import { ArticlibRequest } from "../../Articlib/ArticlibRequest";
-import { Articlib } from "../../generated/ArticlibClient";
+import { ArticlibRequest } from "../../Requests/ArticlibRequest";
+import { Articlib } from "../../../generated/ArticlibClient";
 
 export class BatchGetUsersRequest extends ArticlibRequest<Articlib.ApiResponseOfListOfUserDto> {
   readonly ids: string[];

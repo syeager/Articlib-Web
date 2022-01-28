@@ -1,5 +1,5 @@
 import { Articlib } from "@/generated/ArticlibClient";
-import { User } from "@/Users/Models/User";
+import { User } from "@/Articlib/Users/Models/User";
 import { Moment } from "moment";
 
 export class Article {
