@@ -13,7 +13,7 @@ export function HomePage(): JSX.Element {
       setArticles(articles);
     };
     api();
-  });
+  }, []);
 
   if (!articles) {
     return <Spinner animation="grow" />;
