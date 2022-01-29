@@ -10,14 +10,25 @@ export function ArticleView(props: Props): JSX.Element {
 
   return (
     <Card>
-      <Card.Header>{article.id}</Card.Header>
-      <Card.Body>
-        <a href={article.url} className="btn btn-info" role="button">
-          Read
-        </a>
-      </Card.Body>
+      {renderHeader(article)}
+      {renderBody(article)}
       {renderFooter(article)}
     </Card>
+  );
+}
+
+function renderHeader(article: Article): JSX.Element {
+  return <Card.Header>Likes: {article.voteCount}</Card.Header>;
+}
+
+function renderBody(article: Article): JSX.Element {
+  return (
+    <Card.Body>
+      {article.id}
+      <a href={article.url} className="btn btn-info" role="button">
+        Read
+      </a>
+    </Card.Body>
   );
 }
 
