@@ -4,12 +4,13 @@ import { RequestManager } from "../../../Articlib/Requests";
 import { Articlib } from "../../../generated/ArticlibClient";
 import { BatchGetUsersRequest } from "../../Users/Requests/BatchGetUsersRequest";
 import { User } from "../../Users/Models/User";
+import { PagedItems } from "../../../common/Pagination/PagedItems";
 
 const { ApiResponseOfPageResponseOfArticleDto, ApiResponseOfListOfUserDto } = {
   ...Articlib,
 };
 
-export async function FilterArticlesCommand(): Promise<Article[]> {
+export async function FilterArticlesCommand(): Promise<PagedItems<Article>> {
   const articlesRequest = new FilterArticlesRequest();
   const articlesResponse = await RequestManager.send(articlesRequest);
 
@@ -17,7 +18,12 @@ export async function FilterArticlesCommand(): Promise<Article[]> {
     throw console.error(articlesResponse?.message);
   }
 
-  const articleDtos = articlesResponse.obj?.results;
+  const pagedArticles = articlesResponse.obj;
+  if (!pagedArticles) {
+    throw console.error("Missing articles");
+  }
+
+  const articleDtos = pagedArticles.results;
   if (!articleDtos) {
     throw console.error("Missing articles");
   }
@@ -38,5 +44,11 @@ export async function FilterArticlesCommand(): Promise<Article[]> {
   });
 
   const articles = articleDtos.map((a) => createArticle(a, users[a.posterId]));
-  return articles;
+
+  const pagedItems = new PagedItems<Article>(
+    pagedArticles.page || 0,
+    pagedArticles.totalPages || 0,
+    articles
+  );
+  return pagedItems;
 }
