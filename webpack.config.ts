@@ -8,6 +8,9 @@ const srcPath = path.resolve(__dirname, "src");
 const distPath = path.resolve(__dirname, "dist");
 
 module.exports = {
+  stats: {
+    errorDetails: true,
+  },
   entry: [
     "react-hot-loader/patch",
     "webpack-dev-server/client?http://localhost:8888",
