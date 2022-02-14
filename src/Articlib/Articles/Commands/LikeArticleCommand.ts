@@ -33,6 +33,6 @@ export async function LikeArticleCommand(
     throw console.error(`Could not ${direction.toString()} like`);
   }
 
-  article = createArticle(response.obj, user);
+  article = createArticle(response.obj);
   return article;
 }

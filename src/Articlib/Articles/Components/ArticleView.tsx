@@ -33,15 +33,13 @@ export function ArticleView(props: Props): JSX.Element {
           Read
         </a>
       </Card.Body>
-      <Card.Footer>
-        Posted by {article.poster.username} {postedDate}
-      </Card.Footer>
+      <Card.Footer>{postedDate}</Card.Footer>
     </Card>
   );
 }
 
 function calculatePostedDate(article: Article): string {
-  const diff = moment.duration(moment.utc().diff(article.postedDate));
+  const diff = moment.duration(article.lastPostedDate.diff(moment.utc()));
 
   let postedDate = "";
   if (diff.asMinutes() < 60) {
@@ -49,7 +47,7 @@ function calculatePostedDate(article: Article): string {
   } else if (diff.asHours() < 24) {
     postedDate = `${diff.hours()} hour(s) ago`;
   } else {
-    postedDate = `on ${article.postedDate.toLocaleString()}`;
+    postedDate = `on ${article.lastPostedDate.toLocaleString()}`;
   }
 
   return postedDate;

@@ -1,36 +1,35 @@
 import { Articlib } from "@/generated/ArticlibClient";
-import { User } from "@/Articlib/Users/Models/User";
 import { Moment } from "moment";
 
 export class Article {
   public readonly id: string;
   public readonly url: string;
-  public readonly poster: User;
   public readonly voteCount: number;
-  public readonly postedDate: Moment;
+  public readonly postedCount: number;
+  public readonly lastPostedDate: Moment;
 
   constructor(
     id: string,
     url: string,
-    poster: User,
     voteCount: number,
-    postedDate: Moment
+    postedCount: number,
+    lastPostedDate: Moment
   ) {
     this.id = id;
     this.url = url;
-    this.poster = poster;
     this.voteCount = voteCount;
-    this.postedDate = postedDate;
+    this.postedCount = postedCount;
+    this.lastPostedDate = lastPostedDate;
   }
 }
 
-export function createArticle(dto: Articlib.ArticleDto, user: User): Article {
+export function createArticle(dto: Articlib.ArticleDto): Article {
   const article = new Article(
     dto.id,
     dto.url,
-    user,
     dto.voteCount,
-    dto.postedDate
+    dto.postedCount,
+    dto.lastPostedDate
   );
   return article;
 }
