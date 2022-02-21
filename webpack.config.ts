@@ -3,6 +3,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
+const TsconfigPathsPluginDefault = require("tsconfig-paths-webpack-plugin");
 
 const srcPath = path.resolve(__dirname, "src");
 const distPath = path.resolve(__dirname, "dist");
@@ -20,6 +21,7 @@ module.exports = {
   devtool: "source-map",
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".jsx", ".json"],
+    plugins: [new TsconfigPathsPluginDefault()],
   },
   module: {
     rules: [
