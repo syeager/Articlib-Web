@@ -5,7 +5,7 @@ export function Navbar(): JSX.Element {
   return (
     <BootStrapNavbar bg="light">
       <Container>
-        <BootStrapNavbar.Brand href="#home">Articlib</BootStrapNavbar.Brand>
+        <BootStrapNavbar.Brand href="/">Articlib</BootStrapNavbar.Brand>
         <LogInButton />
       </Container>
     </BootStrapNavbar>
