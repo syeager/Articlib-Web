@@ -16,6 +16,7 @@ export function LogInForm(props: Props): JSX.Element {
 
   const onSubmit = (e: React.MouseEvent): void => {
     e.stopPropagation();
+    e.preventDefault();
     props.onSubmit({ email, password });
   };
 
