@@ -1,0 +1,41 @@
+.article {
+  border: 1px solid black;
+  padding: 4px;
+  width: 600px;
+}
+
+.article-body {
+  display: flex;
+}
+
+.article-body-image {
+  background-size: cover;
+  width: 500px;
+  height: 200px;
+}
+
+.article-body-tags {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 80px;
+}
+
+.article-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-footer-stats {
+  display: flex;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.article-header-stats {
+  display: flex;
+  justify-content: space-between;
+}
