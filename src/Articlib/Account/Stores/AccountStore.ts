@@ -1,16 +1,21 @@
-import { User } from "../../Users/Models/User";
+import { User } from "@Users/Models/User";
 
 const accessTokenKey = "account.accessToken";
 const userKey = "account.user";
 
 let activeUser: User | null;
-let activeAccessToken: string | null;
+let activeAccessToken = "";
 
 export function logIn(accessToken: string, user: User): void {
   localStorage.setItem(accessTokenKey, accessToken);
   activeAccessToken = accessToken;
   localStorage.setItem(userKey, JSON.stringify(user));
   activeUser = user;
+}
+
+export function logOut(): void {
+  localStorage.removeItem(accessTokenKey);
+  localStorage.removeItem(userKey);
 }
 
 export function getUser(): User | null {
@@ -27,9 +32,9 @@ export function getUser(): User | null {
   return activeUser;
 }
 
-export function getAccessToken(): string | null {
+export function getAccessToken(): string {
   if (!activeAccessToken) {
-    activeAccessToken = localStorage.getItem(accessTokenKey);
+    activeAccessToken = localStorage.getItem(accessTokenKey) || "";
   }
 
   return activeAccessToken;

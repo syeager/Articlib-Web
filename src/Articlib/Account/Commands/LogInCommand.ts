@@ -1,5 +1,5 @@
 import { RequestManager } from "@/Articlib/Requests";
-import { Articlib } from "@/generated/ArticlibClient";
+import { Articlib } from "@Api";
 import { LogInRequest } from "../Requests/LogInRequest";
 import { logIn } from "../Stores/AccountStore";
 import { User } from "@Users/Models/User";

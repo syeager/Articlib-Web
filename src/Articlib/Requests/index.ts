@@ -1,12 +1,12 @@
-import { Articlib } from "../../generated/ArticlibClient";
+import { Articlib } from "@Api";
 export { ArticlibRequest } from "./ArticlibRequest";
 import {
   ApiResultsFactory,
   ArticlibRequestManager,
 } from "./ArticlibRequestManager";
+import { getAccessToken } from "../Account/Stores/AccountStore";
 
 const client = new Articlib.Client();
-const getAccessToken = () => "";
 
 const factory = new ApiResultsFactory();
 

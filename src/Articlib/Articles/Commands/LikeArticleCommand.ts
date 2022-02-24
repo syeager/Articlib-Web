@@ -1,5 +1,5 @@
 import { RequestManager } from "../../../Articlib/Requests";
-import { Articlib } from "../../../generated/ArticlibClient";
+import { Articlib } from "@Api";
 import { Article, createArticle } from "../Models/Article";
 import {
   AddLikeArticleRequest,
