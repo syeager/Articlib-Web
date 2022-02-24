@@ -1,4 +1,4 @@
-import { Badge, Button, Card } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
 import { Article } from "@Articles/Models/Article";
 import moment from "moment";
 import { LikeButton } from "@/Articlib/Components/LikeButton";
@@ -36,12 +36,7 @@ export function ArticleView(props: Props): JSX.Element {
             <span>76</span>
             <EyeFill />
           </div>
-          <div>
-            <span>44</span>
-            <Button>
-              <HandThumbsUpFill />
-            </Button>
-          </div>
+          <LikeButton isLiked={false} likeCount={voteCount} onClick={vote} />
         </div>
       </div>
       <div className="article-body">
