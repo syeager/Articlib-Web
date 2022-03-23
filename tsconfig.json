@@ -26,7 +26,10 @@
     "paths": {
       "@/*": [
         "./*"
-      ]
+      ],
+      "@Articles/*": ["./Articlib/Articles/*"],
+      "@Api": ["./generated/ArticlibClient"],
+      "@Users/*": ["./Articlib/Users/*"]
     },
   },
   "include": [

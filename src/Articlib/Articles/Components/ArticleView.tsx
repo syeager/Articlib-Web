@@ -1,9 +1,14 @@
-import { Card } from "react-bootstrap";
-import { Article } from "../Models/Article";
+import { Badge, Button } from "react-bootstrap";
+import { Article } from "@Articles/Models/Article";
 import moment from "moment";
-import { LikeButton } from "../../Components/LikeButton";
-import { Direction, LikeArticleCommand } from "../Commands/LikeArticleCommand";
+import { LikeButton } from "@/Articlib/Components/LikeButton";
+import {
+  Direction,
+  LikeArticleCommand,
+} from "@Articles/Commands/LikeArticleCommand";
 import { useState } from "react";
+import { EyeFill, HandThumbsUpFill, Mailbox } from "react-bootstrap-icons";
+import "./ArticleView.css";
 
 type Props = {
   article: Article;
@@ -23,18 +28,41 @@ export function ArticleView(props: Props): JSX.Element {
   const postedDate = calculatePostedDate(article);
 
   return (
-    <Card>
-      <Card.Header>
-        <LikeButton isLiked={false} likeCount={voteCount} onClick={vote} />
-      </Card.Header>
-      <Card.Body>
-        {article.id}
-        <a href={article.url} className="btn btn-info" role="button">
-          Read
-        </a>
-      </Card.Body>
-      <Card.Footer>{postedDate}</Card.Footer>
-    </Card>
+    <div className="article">
+      <div className="article-header">
+        <span>Some title goes here</span>
+        <div className="article-header-stats">
+          <div>
+            <span>76</span>
+            <EyeFill />
+          </div>
+          <LikeButton isLiked={false} likeCount={voteCount} onClick={vote} />
+        </div>
+      </div>
+      <div className="article-body">
+        <div className="article-body-tags">
+          <Badge>dotnet (12)</Badge>
+          <Badge>security (10)</Badge>
+          <Badge>linux (8)</Badge>
+        </div>
+        <div
+          className="article-body-image"
+          style={{
+            backgroundImage:
+              "url(https://static.heroesofthestorm.com/images/global/fb-share-1fcc54becc.jpg)",
+          }}
+        />
+      </div>
+      <div className="article-footer">
+        <span>somecoderblog</span>
+        <div className="article-footer-stats">
+          <span>{postedDate}</span>
+          <span>
+            3<Mailbox />
+          </span>
+        </div>
+      </div>
+    </div>
   );
 }
 

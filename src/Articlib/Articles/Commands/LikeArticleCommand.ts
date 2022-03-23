@@ -1,11 +1,11 @@
 import { RequestManager } from "../../../Articlib/Requests";
-import { Articlib } from "../../../generated/ArticlibClient";
+import { Articlib } from "@Api";
 import { Article, createArticle } from "../Models/Article";
 import {
   AddLikeArticleRequest,
   RemoveLikeArticleRequest,
 } from "../Requests/LikeArticleRequest";
-import { loadUser } from "../../../Articlib/Users/Stores/ActiveUserStore";
+import { getUser } from "../../Account/Stores/AccountStore";
 
 export enum Direction {
   Add = "Add",
@@ -16,7 +16,7 @@ export async function LikeArticleCommand(
   article: Article,
   direction: Direction
 ): Promise<Article> {
-  const user = loadUser();
+  const user = getUser();
   if (!user) {
     return article;
   }
