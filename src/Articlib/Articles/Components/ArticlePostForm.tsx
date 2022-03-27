@@ -1,24 +1,33 @@
-import { Button, Form } from "react-bootstrap";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { PostArticleCommand } from "@Articles/Commands";
 import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Navigate } from "react-router-dom";
+import { PostArticleCommand } from "@Articles/Commands";
 
 type FormValues = {
   url: string;
 };
 
+enum State {
+  Input,
+  Submitting,
+  Complete,
+}
+
 export function ArticlePostForm(): JSX.Element {
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, setState] = useState(State.Input);
   const { register, handleSubmit } = useForm<FormValues>();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    setIsLoading(true);
+    setState(State.Submitting);
     await PostArticleCommand(data.url);
-    setIsLoading(false);
-    alert("Article posted!");
+    alert("Article has been posted! Thanks for sharing 😁");
+    setState(State.Complete);
   };
 
-  return (
+  return state == State.Complete ? (
+    <Navigate to="/" />
+  ) : (
     <Form onSubmit={handleSubmit(onSubmit)}>
       <Form.Group>
         <Form.Label>Article URL</Form.Label>
@@ -28,7 +37,11 @@ export function ArticlePostForm(): JSX.Element {
           {...register("url")}
         />
       </Form.Group>
-      <Button type="submit" variant="primary" disabled={isLoading}>
+      <Button
+        type="submit"
+        variant="primary"
+        disabled={state == State.Submitting}
+      >
         Post
       </Button>
     </Form>
