@@ -1,5 +1,5 @@
-import { ArticlibRequest } from "../../../Articlib/Requests";
-import { Articlib } from "../../../generated/ArticlibClient";
+import { ArticlibRequest } from "@/Articlib/Requests";
+import { Articlib } from "@Api";
 
 abstract class LikeArticleRequest extends ArticlibRequest<Articlib.ApiResponseOfArticleDto> {
   private readonly articleId: string;
