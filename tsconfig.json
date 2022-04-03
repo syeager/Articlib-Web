@@ -27,6 +27,7 @@
       "@/*": [
         "./*"
       ],
+      "@Account/*": ["./Articlib/Account/*"],
       "@Articles/*": ["./Articlib/Articles/*"],
       "@Api": ["./generated/ArticlibClient"],
       "@Users/*": ["./Articlib/Users/*"]
