@@ -32,6 +32,14 @@ export function getUser(): User | null {
   return activeUser;
 }
 
+export function getUserRequired(): User {
+  const user = getUser();
+  if (!user) {
+    throw new NotAuthenticatedError();
+  }
+  return user;
+}
+
 export function getAccessToken(): string {
   if (!activeAccessToken) {
     activeAccessToken = localStorage.getItem(accessTokenKey) || "";
@@ -39,3 +47,5 @@ export function getAccessToken(): string {
 
   return activeAccessToken;
 }
+
+export class NotAuthenticatedError extends Error {}

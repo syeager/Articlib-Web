@@ -1,8 +1,13 @@
-import { Container, Nav, Navbar as BootStrapNavbar } from "react-bootstrap";
+import {
+  Container,
+  Nav,
+  Navbar as BootStrapNavbar,
+  NavDropdown,
+} from "react-bootstrap";
 import { getUser } from "../Account/Stores/AccountStore";
 import { User } from "@Users/Models/User";
 import { LogInButton } from "./LogInButton";
-import { LogOutButton } from "./LogOutButton";
+import { LinkContainer } from "react-router-bootstrap";
 
 export function Navbar(): JSX.Element {
   const user = getUser();
@@ -21,8 +26,16 @@ export function Navbar(): JSX.Element {
 function drawUser(user: User): JSX.Element {
   return (
     <>
-      <Nav.Link href="#">{user.username}</Nav.Link>
-      <LogOutButton />
+      <LinkContainer to="/article/post">
+        <Nav.Link>Post Article</Nav.Link>
+      </LinkContainer>
+      <NavDropdown title={user.username}>
+        <NavDropdown.Item href="#">Account</NavDropdown.Item>
+        <NavDropdown.Divider />
+        <LinkContainer to="/logOut">
+          <NavDropdown.Item>Log Out</NavDropdown.Item>
+        </LinkContainer>
+      </NavDropdown>
     </>
   );
 }

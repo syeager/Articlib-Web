@@ -5,7 +5,7 @@ import {
   AddLikeArticleRequest,
   RemoveLikeArticleRequest,
 } from "../Requests/LikeArticleRequest";
-import { getUser } from "../../Account/Stores/AccountStore";
+import { getUserRequired } from "../../Account/Stores/AccountStore";
 
 export enum Direction {
   Add = "Add",
@@ -16,10 +16,8 @@ export async function LikeArticleCommand(
   article: Article,
   direction: Direction
 ): Promise<Article> {
-  const user = getUser();
-  if (!user) {
-    return article;
-  }
+  const user = getUserRequired();
+
   const likeRequest =
     direction == Direction.Add
       ? new AddLikeArticleRequest(article.id, user.id)

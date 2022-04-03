@@ -3,12 +3,34 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { HomePage } from "../Pages/Home/HomePage";
 import { Navbar } from "../Navbar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { FormPage } from "../Pages/FormPage";
+import { ArticlePostForm } from "../Articles/Components/ArticlePostForm";
 
 function App(): JSX.Element {
   return (
     <div className="App">
-      <Navbar />
-      <HomePage />
+      <Router>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Navbar />
+                <HomePage />
+              </>
+            }
+          />
+          <Route
+            path="/article/post"
+            element={
+              <FormPage>
+                <ArticlePostForm />
+              </FormPage>
+            }
+          />
+        </Routes>
+      </Router>
     </div>
   );
 }
