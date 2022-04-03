@@ -10,5 +10,10 @@ export function LogOutPage(): JSX.Element {
     setIsLoggedOut(true);
   }, []);
 
-  return isLoggedOut ? <Navigate to="/" /> : <div>Bye 🙋‍♀️</div>;
+  if (isLoggedOut) {
+    alert("You have been successfully logged out. Bye 🙋‍♀️");
+    return <Navigate to="/" />;
+  }
+
+  return <div>Logging you out...</div>;
 }
