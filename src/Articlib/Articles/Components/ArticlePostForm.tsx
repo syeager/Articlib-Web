@@ -18,7 +18,7 @@ export function ArticlePostForm(): JSX.Element {
   const [state, setState] = useState(State.Input);
   const { register, handleSubmit } = useForm<FormValues>();
 
-  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  const onSubmit: SubmitHandler<FormValues> = async (data: FormValues) => {
     setState(State.Submitting);
     await PostArticleCommand(data.url);
     alert("Article has been posted! Thanks for sharing 😁");
